@@ -11,6 +11,9 @@ def init_logger():
         "<level>{message}</level>"
     )
     
+    # 添加默认的 module 字段到所有日志记录
+    logger.configure(extra={"module": "unknown"})
+    
     if os.getenv("PROJECT_ENV") == "prod":
         logger.add(
             "logs/app_{time}.log",  # 保存log日志
